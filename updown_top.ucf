@@ -1,0 +1,23 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "clk" LOC = AB13;
+NET "Up" LOC = D15;
+NET "Down" LOC = D17;
+NET "rst" LOC = E16;
+NET "SEG_Com[7]" LOC = G7;
+NET "SEG_Com[6]" LOC = G6;
+NET "SEG_Com[5]" LOC = F7;
+NET "SEG_Com[4]" LOC = F5;
+NET "SEG_Com[3]" LOC = K7;
+NET "SEG_Com[2]" LOC = K6;
+NET "SEG_Com[1]" LOC = K5;
+NET "SEG_Com[0]" LOC = J7;
+NET "SEG_Data[7]" LOC = H5;
+NET "SEG_Data[6]" LOC = H6;
+NET "SEG_Data[5]" LOC = H8;
+NET "SEG_Data[4]" LOC = J6;
+NET "SEG_Data[3]" LOC = D6;
+NET "SEG_Data[2]" LOC = D5;
+NET "SEG_Data[1]" LOC = E5;
+NET "SEG_Data[0]" LOC = E6;
