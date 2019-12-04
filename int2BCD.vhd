@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.Std_Logic_arith.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -37,25 +38,25 @@ end conv;
 architecture conv_vec of conv is
 
 function conv_vector (Y, L: INTEGER) return std_logic_vector is
-    constant y_length : integer := L;                 -- º¯È¯ÇÒ std_logic_vectorÀÇ Å©±â ÁöÁ¤
-    variable result2: std_logic_vector ( y_length-1 downto 0); -- ÁöÁ¤ÇÑ Å©±âÀÇ vector º¯¼ö ÁöÁ¤
-    variable y2: integer := Y;                        -- ÀÔ·ÂÇÑ integer¸¦ y2 º¯¼ö·Î ÁöÁ¤
-    variable y_div, y_eq, y_res: integer := 0 ;       -- ¸ò,°ö,³ª¸ÓÁö¸¦ À§ÇÑ º¯¼ö¸¦ ÁöÁ¤, ÃÊ±âÈ­
+    constant y_length : integer := L;                 -- ë³€í™˜í•  std_logic_vectorì˜ í¬ê¸° ì§€ì •
+    variable result2: std_logic_vector ( y_length-1 downto 0); -- ì§€ì •í•œ í¬ê¸°ì˜ vector ë³€ìˆ˜ ì§€ì •
+    variable y2: integer := Y;                        -- ì…ë ¥í•œ integerë¥¼ y2 ë³€ìˆ˜ë¡œ ì§€ì •
+    variable y_div, y_eq, y_res: integer := 0 ;       -- ëª«,ê³±,ë‚˜ë¨¸ì§€ë¥¼ ìœ„í•œ ë³€ìˆ˜ë¥¼ ì§€ì •, ì´ˆê¸°í™”
     begin
-      if ( y2 >= 0) then                                -- ÀÔ·ÂÀÌ 0º¸´Ù Å¬ ¶§ ¼öÇà
-          for i in 0 to y_length-1 loop                 -- ÁöÁ¤ÇÑ Å©±â ¸¸Å­ ¹İº¹ ¼öÇà
-            y_div := y2 / 2;                            -- ÀÔ·ÂÀ» 2·Î ³ª´®
-            y_eq := y_div * 2;                          -- 2·Î ³ª´« ¸ò¿¡ 2¸¦ °öÇÏ°í
-            y_res := y2 - y_eq;                         -- ¿ø·¡ÀÇ °ª¿¡¼­ »©¼­ ³ª¸ÓÁö¸¦ ±¸ÇÔ
-            if (y_res >= 1) then                        -- ³ª¸ÓÁö°¡ 1ÀÌ¸é
-              result2(i) := '1';                        --  std_logic_vector¿¡ 1À» ÀÔ·Â
+      if ( y2 >= 0) then                                -- ì…ë ¥ì´ 0ë³´ë‹¤ í´ ë•Œ ìˆ˜í–‰
+          for i in 0 to y_length-1 loop                 -- ì§€ì •í•œ í¬ê¸° ë§Œí¼ ë°˜ë³µ ìˆ˜í–‰
+            y_div := y2 / 2;                            -- ì…ë ¥ì„ 2ë¡œ ë‚˜ëˆ”
+            y_eq := y_div * 2;                          -- 2ë¡œ ë‚˜ëˆˆ ëª«ì— 2ë¥¼ ê³±í•˜ê³ 
+            y_res := y2 - y_eq;                         -- ì›ë˜ì˜ ê°’ì—ì„œ ë¹¼ì„œ ë‚˜ë¨¸ì§€ë¥¼ êµ¬í•¨
+            if (y_res >= 1) then                        -- ë‚˜ë¨¸ì§€ê°€ 1ì´ë©´
+              result2(i) := '1';                        --  std_logic_vectorì— 1ì„ ì…ë ¥
             else
-              result2(i) := '0';                        --  std_logic_vector¿¡ 0À» ÀÔ·Â
+              result2(i) := '0';                        --  std_logic_vectorì— 0ì„ ì…ë ¥
             end if;
-            y2 := y2 / 2;                               -- ÀÔ·Â °ªÀ» 2·Î ³ª´©°í À§·Î ¹İº¹
+            y2 := y2 / 2;                               -- ì…ë ¥ ê°’ì„ 2ë¡œ ë‚˜ëˆ„ê³  ìœ„ë¡œ ë°˜ë³µ
           end loop;
       else
-          for i in y_length-1 downto 0 loop             -- ÀÔ·ÂÀÌ 0º¸´Ù ÀÛÀ¸¸é ¸ğµç °ªÀ» 0À¸·Î ÁöÁ¤
+          for i in y_length-1 downto 0 loop             -- ì…ë ¥ì´ 0ë³´ë‹¤ ì‘ìœ¼ë©´ ëª¨ë“  ê°’ì„ 0ìœ¼ë¡œ ì§€ì •
             result2(i) := '0';
           end loop;
       end if;
